@@ -34,10 +34,10 @@ namespace CityInfo.API
 #else       
             services.AddTransient<IMailService, CloudMailService>();
 #endif
-            var connectionString = @"Server=(localdb)\MSSQLLocalDB;Database=CityInfoDB;Trusted_Connection=True;";
+            var connectionString = "Host=localhost;Port=5432;Database=CityInfoDB;User Id=postgres;Password=best_password_ever;";
             services.AddDbContext<CityInfoContext>(o =>
             {
-                o.UseSqlServer(connectionString);
+                o.UseNpgsql(connectionString);
             });
         }
 
